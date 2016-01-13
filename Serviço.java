@@ -12,9 +12,7 @@ public class Serviço implements Serializable
     private GregorianCalendar aux;
     private Carga c;
     private Veiculo v;
-    //coisoSDSFS
-    //SDFSDFSDF
-    //SDFSDF
+   
     /**
     * Construtor de cópia de Serviços
     */
