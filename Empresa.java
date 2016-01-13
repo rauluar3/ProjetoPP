@@ -8,9 +8,10 @@ import java.util.List;
 public class Empresa implements Serializable
 {
    private HashMap<FichaDeCliente,ArrayList<Serviço>> lista;
-   private ArrayList<Veiculo> veiculos;
-   private ArrayList<FichaDeCliente> fichas;
-   private HashMap<Veiculo,Serviço> list;
+   private HashMap<Integer,Veiculo> veiculos;
+   private HashMap<Integer,Carga> cargas;
+   
+   
    
     /**
      *  Constrói uma nova instância de Empresa com exemplos incluídos
@@ -19,8 +20,8 @@ public class Empresa implements Serializable
 public Empresa()
 {   
     this.lista = new HashMap<FichaDeCliente,ArrayList<Serviço>>();
-    this.veiculos = new ArrayList<Veiculo>();  
-    this.fichas = new ArrayList<FichaDeCliente>();
+    this.veiculos = new HashMap<Integer,Veiculo>();  
+    this.cargas = new HashMap<Integer,Carga>();
     
     //---------------------------------------------------------------------------------------
     /*Solidos solidos1 = new Solidos(1,"01-AA-01",15.0,70.0);
@@ -34,7 +35,7 @@ public Empresa()
     this.veiculos.add(solidos2.clone());
     this.veiculos.add(cisternas1.clone());
     this.veiculos.add(cisternas2.clone());
-    */this.veiculos.add(frageis1.clone());
+    */this.veiculos.put(5,frageis1.clone());
     /*this.veiculos.add(frageis2.clone());
     
     //--------------------------------------------------------
@@ -46,27 +47,39 @@ public Empresa()
 /**
      * Adiciona um novo veiculo na instância Empresa
      * @param c Codigo do Veiculo
+     * @param tipo 1 se Solido, 2 se Cisterna, 3 se Frageis
      * @return verdadeiro - se o Veiculo for adicionado com sucesso
      */
-public boolean addVeiculo(int c,String m,double con,double cap)
+public boolean addVeiculo(int c,String m,double con,double cap,int tipo)
 {  
-    for(Veiculo v:this.veiculos)
-    {
-        if(v.getCodigo()==c)
-        {
-            return false;
-        }
-        else
-            if(v instanceof Solidos){
-                this.veiculos.add(new Solidos(c,m,con,cap));}
-            if(v instanceof Cisternas){
-                this.veiculos.add(new Cisternas(c,m,con,cap));}
-            if(v instanceof Frageis){
-                this.veiculos.add(new Frageis(c,m,con,cap));}
-    }   
+    if(this.veiculos.containsKey(c))
+        return false;
+       
+        if(tipo == 1){
+        this.veiculos.put(c,new Solidos(c,m,con,cap));}
+        if(tipo == 2){
+        this.veiculos.put(c,new Cisternas(c,m,con,cap));}
+        if(tipo == 3){
+        this.veiculos.put(c,new Frageis(c,m,con,cap));}
+     
         return true;
     
 }
+ 
+public boolean addCargas(int c,Carga z)
+{
+    if(this.cargas.containsKey(c))
+        return false;
+        
+        this.cargas.put(c,z);
+               
+        return true;
+    }      
+        
+public Carga getCarga(int c)
+{  return this.cargas.get(c);}    
+    
+
 /**
      * Adiciona um Serviço a um dado Veiculo na lista da Empresa
      * @param x UAV a adicionar no log
@@ -86,6 +99,18 @@ public boolean addServiço(FichaDeCliente f,Serviço s)
         lista.get(f).add(s.clone());
         return true;
     }
+}
+
+public Veiculo getVeiculo(int cod){
+    return this.veiculos.get(cod);
+}
+
+public FichaDeCliente getFicha(int cod){
+    for(FichaDeCliente f : lista.keySet()){
+        if(cod==(f.getNumCliente()))
+        return f;
+    }
+    return null;
 }
 
  /**
@@ -126,6 +151,8 @@ public boolean addServiço(FichaDeCliente f,Serviço s)
        
         return valor;
 }
+
+
     public Serviço maisCombustivel()
     {   
         Serviço max = null;
@@ -145,11 +172,12 @@ public boolean addServiço(FichaDeCliente f,Serviço s)
     return max.clone();
 }
 
-    public ArrayList<FichaDeCliente> preencher()
+    public List<FichaDeCliente> preencher()
     {
+        ArrayList<FichaDeCliente> fichas = new ArrayList<FichaDeCliente>();
         for(FichaDeCliente f:lista.keySet())
         {
-          this.fichas.add(f);  
+          fichas.add(f);  
         }
         sortByName(fichas);
         return fichas;
@@ -159,6 +187,28 @@ public boolean addServiço(FichaDeCliente f,Serviço s)
     {
         Collections.sort(fichas, new PersonComparator());
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 

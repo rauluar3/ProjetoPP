@@ -28,7 +28,7 @@ public class Serviço implements Serializable
      this.v=x.getVeiculo();
     }
      
- public Serviço(int c, int cc, String d,double dd,Carga b,Veiculo v)
+ public Serviço(int c, int cc, String d,double dd,Veiculo v,Carga b)
  {
      this.codigo=c;
      this.codigoCliente=cc;
@@ -134,7 +134,7 @@ public class Serviço implements Serializable
      */
     public Serviço clone()
     {
-        Serviço s= new Serviço(this.codigo,this.codigoCliente,this.destino,this.distancia,this.c,this.v);
+        Serviço s= new Serviço(this.codigo,this.codigoCliente,this.destino,this.distancia,this.v,this.c);
             
         return s;
     }

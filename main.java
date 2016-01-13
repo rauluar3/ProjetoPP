@@ -161,7 +161,11 @@ public class main
                         double cc=input.nextDouble();
                         System.out.println("Introduza a capacidade de carga:");
                         double ccc=input.nextDouble();
-                        if(e.addVeiculo(b,mm,cc,ccc))
+                        int tipo=0;
+                        if(c.equals("Solidos"))tipo=1;
+                        if(c.equals("Cisternas"))tipo=2;
+                        if(c.equals("Frageis"))tipo=3;
+                        if(e.addVeiculo(b,mm,cc,ccc,tipo))
                             System.out.println("Foi adicionado com sucesso!");
                         else
                             System.out.println("Veiculo existente!");
@@ -199,7 +203,7 @@ public class main
         }
     }
         
-    /*public static void criarServiço(Scanner input,Empresa e) throws IOException
+    public static void criarServiço(Scanner input,Empresa e) throws IOException
     {
         try
         {                      
@@ -207,48 +211,77 @@ public class main
             int cod=input.nextInt();
             System.out.println("Insira o seu codigo-Cliente: ");
             int codC=input.nextInt();
-            System.out.println("Material da carga a transportar(Solido,Liquido,FragilQuebraveis,FragilToxicos): ");
-            String mat=input.next();
             System.out.println("Qual o destino: ");
             String dest=input.next();
             System.out.println("Qual a distancia: ");
             double dist=input.nextDouble();
+            System.out.println("Qual o código do veiculo ");
+            int codVeic = input.nextInt();
+            System.out.println("Material da carga a transportar(1-Solido,2-Liquido,3-FragilQuebraveis,4-FragilToxicos): ");
+            int material=input.nextInt();
+            int tipo = 0;
+            int c=0;;
             
-            Serviço t = new Serviço(cod,codC,dest,dist);
+            if(material == 1){
+            tipo = 1;
+            System.out.println("Qual o código da carga ");
+            c = input.nextInt();                
+            System.out.println("Qual a volumetria ");
+            double vol = input.nextDouble();
+            Solido s = new Solido(c,vol);
+            e.addCargas(c,s);}
             
-            if(e.addServiço(f,t)){
-                System.out.println("Serviço criado com sucesso!");
+            if(material == 2){
+            tipo = 2;
+            System.out.println("Qual o código da carga ");
+            c = input.nextInt(); 
+            System.out.println("Qual o peso ");
+            double pes = input.nextDouble();
+            Liquido l = new Liquido(c,pes);
+            e.addCargas(c,l);}
+            
+            if(material == 3){
+            tipo = 3;
+            System.out.println("Qual o código da carga ");
+            c = input.nextInt(); 
+            System.out.println("Qual o peso ");
+            double pes = input.nextDouble();
+            System.out.println("Qual a taxa ");
+            double tax = input.nextDouble();
+            Quebraveis q = new Quebraveis(c,pes,tax);
+            e.addCargas(c,q);}
+            
+            if(material == 4){
+            tipo = 4;
+            System.out.println("Qual o código da carga ");
+             c = input.nextInt(); 
+            System.out.println("Qual o peso ");
+            double pes = input.nextDouble();
+            System.out.println("Qual a taxa ");
+            double tax = input.nextDouble();
+            System.out.println("Qual a taxa ambiental ");
+            double taxA = input.nextDouble();
+            Toxicos t = new Toxicos(c,pes,tax,taxA);
+            e.addCargas(c,t);}
+            
+            
+            
+            Veiculo v = e.getVeiculo(codVeic);
+            if(v==null){
+                System.out.println("Não existe!"); 
+                return;}
+                        
+            Serviço s = new Serviço(cod,codC,dest,dist,v,e.getCarga(c));
+            FichaDeCliente f = e.getFicha(codC);
+            e.addServiço(f,s);
+            
                 
-                if(codC==f.getNif())
-                    System.out.println(f.getNome());
-                    else{ System.out.println("Preencha Ficha De Cliente");}
-                
-                if(mat.equals("Solido")){
-                    System.out.println("Veiculo carga Solida");
-                    System.out.println(t.fatura(c,v));}
-                    
-                if(mat.equals("Liquido")){
-                    System.out.println("Veiculo carga Liquida");
-                    System.out.println(t.fatura(c,v));}
-                    
-                if(mat.equals("FragilQuebraveis")){
-                    System.out.println("Veiculo Fragil,carga Quebravél");
-                    System.out.println(t.fatura(c,v));}
-                    
-                if(mat.equals("FragilToxicos")){
-                    System.out.println("Veiculo Fragil, carga Toxica");
-                    System.out.println(t.fatura(c,v));}}
-                
-                   
-                else
-                 {System.out.println("Não há serviço disponivel");}
-                
-        }
+            }       
         catch(InputMismatchException x)
         {
             System.out.println("Erro de Input!!");
         }
-    }    */     
+    }        
                 
     
     public static void maisCombustivel(Empresa e)
