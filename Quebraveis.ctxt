@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=c\ p\ t
+comment0.target=Quebraveis(int,\ double,\ double)
+comment1.params=
+comment1.target=double\ valorFrete()
+comment2.params=v
+comment2.target=boolean\ transporte(Veiculo)
+comment3.params=
+comment3.target=Quebraveis\ clone()
+numComments=4

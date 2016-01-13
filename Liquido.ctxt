@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=c\ p
+comment0.target=Liquido(int,\ double)
+comment1.params=
+comment1.target=double\ valorFrete()
+comment2.params=
+comment2.target=double\ carga()
+comment3.params=v
+comment3.target=boolean\ transporte(Veiculo)
+comment4.params=
+comment4.target=Liquido\ clone()
+numComments=5

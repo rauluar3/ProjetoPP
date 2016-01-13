@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=c\ v
+comment0.target=Solido(int,\ double)
+comment1.params=
+comment1.target=double\ valorFrete()
+comment2.params=
+comment2.target=double\ carga()
+comment3.params=v
+comment3.target=boolean\ transporte(Veiculo)
+comment4.params=
+comment4.target=Solido\ clone()
+numComments=5

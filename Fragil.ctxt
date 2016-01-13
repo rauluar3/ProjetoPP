@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=c\ p\ t
+comment0.target=Fragil(int,\ double,\ double)
+comment1.params=
+comment1.target=double\ carga()
+comment2.params=
+comment2.target=double\ getTaxa()
+comment3.params=
+comment3.target=double\ getPeso()
+comment4.params=
+comment4.target=double\ getValorMercado()
+comment5.params=
+comment5.target=double\ valorFrete()
+comment6.params=
+comment6.target=Fragil\ clone()
+numComments=7

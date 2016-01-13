@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Empresa()
+comment0.text=\r\n\ \ Constr\u00F3i\ uma\ nova\ inst\u00E2ncia\ de\ Empresa\ com\ exemplos\ inclu\u00EDdos\r\n
+comment1.params=c\ m\ con\ cap
+comment1.target=boolean\ addVeiculo(int,\ java.lang.String,\ double,\ double)
+comment1.text=\r\n\ Adiciona\ um\ novo\ veiculo\ na\ inst\u00E2ncia\ Empresa\r\n\ @param\ c\ Codigo\ do\ Veiculo\r\n\ @return\ verdadeiro\ -\ se\ o\ Veiculo\ for\ adicionado\ com\ sucesso\r\n
+comment2.params=f\ s
+comment2.target=boolean\ addServi\u00E7o(FichaDeCliente,\ Servi\u00E7o)
+comment2.text=\r\n\ Adiciona\ um\ Servi\u00E7o\ a\ um\ dado\ Veiculo\ na\ lista\ da\ Empresa\r\n\ @param\ x\ UAV\ a\ adicionar\ no\ log\r\n\ @param\ s\ Servi\u00E7o\ a\ adicionar\ no\ log\r\n\ @return\ verdadeiro\ se\ o\ Servi\u00E7o\ foi\ adicionado\ com\ sucesso\r\n
+comment3.params=dia
+comment3.target=double\ valorDia(java.util.GregorianCalendar)
+comment3.text=\r\n\ Calcula\ o\ valor\ facturado\ num\ dado\ dia\ \ \ dfgchjbknllllllllllllllllllllllllllllllllllllllllllllll\r\n\ @param\ dia\ Dia\ a\ consultar\r\n\ @return\ valor\ total\ facturado\ nesse\ dia\r\n
+comment4.params=
+comment4.target=Servi\u00E7o\ maisCombustivel()
+comment5.params=
+comment5.target=java.util.ArrayList\ preencher()
+comment6.params=fichas
+comment6.target=void\ sortByName(java.util.List)
+numComments=7
